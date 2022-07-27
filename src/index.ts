@@ -1,8 +1,6 @@
 import fs from "fs";
-
-// :(
-import fetch, { RequestInit } from "node-fetch";
-
+// :)
+import { $fetch } from "ohmyfetch";
 import path from "path";
 
 export enum UpdateStatus {
@@ -22,8 +20,13 @@ export async function download(url: string, range?: string) {
 		};
 	}
 
-	// Me watching the new feature-lacking ArrayBuffer standard get implemented instead of adding Buffer to web:
-	return Buffer.from(await (await fetch(url, options)).arrayBuffer());
+	return await $fetch<Buffer>(url, {
+		...options,
+		parseResponse: (text) => {
+			return Buffer.from(text);
+		},
+		retry: 3,
+	});
 }
 
 export async function getRemoteAsarHeaderSize(url: string) {

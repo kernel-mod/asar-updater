@@ -1,3 +1,5 @@
+*.asar
+
 # Logs
 logs
 *.log
