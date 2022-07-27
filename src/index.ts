@@ -89,7 +89,7 @@ export async function update(localFile: string | string[], remoteFile: string) {
 	const remoteHeader = await getRemoteAsarHeader(remoteFile, remoteHeaderSize);
 
 	// If the headers are the same, there's no need to update.
-	// Why parse the JSON and iterate over it? This should be is much faster.
+	// Why parse the JSON and iterate over it? This should be much faster.
 	if (localHeader.compare(remoteHeader) === 0) {
 		return UpdateStatus.NONE;
 	}
