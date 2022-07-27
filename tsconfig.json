@@ -14,8 +14,8 @@
 		"types": ["@types/node"],
 		"baseUrl": "./",
 		"paths": {
-			"asar-update/*": ["./src/*"],
-			"asar-update": ["./src/index.ts"]
+			"asar-updater/*": ["./src/*"],
+			"asar-updater": ["./src/index.ts"]
 		},
 		"sourceMap": true
 	}
