@@ -49,6 +49,9 @@ export function getLocalAsarHeaderSize(file: string) {
 	// The first 12 bytes are useless.
 	const headerSizeBuffer = Buffer.alloc(4);
 	fs.readSync(fd, headerSizeBuffer, 0, 4, 12);
+
+	fs.closeSync(fd);
+
 	return headerSizeBuffer.readUint32LE();
 }
 
